@@ -5,12 +5,12 @@
     clone: yes
     force: yes
     dest: /source
-    repo: {{ source_repository_url }}
+    repo: "{{ source_repository_url }}"
 
 - name: Build war file from source
   community.docker.docker_container:
-    image: {{ build_server_name | default('build_server') }}
-    name: {{ build_server_name | default('build_server') }}
+    image: "{{ build_server_name | default('build_server') }}"
+    name: "{{ build_server_name | default('build_server') }}"
     auto_remove: yes
     container_default_behavior: compatibility
     mounts:
@@ -29,8 +29,8 @@
 
 - name: Login into docker hub
   community.docker.docker_login:
-    username: {{ dockerhub_username }}
-    password: {{ dockerhub_token }}
+    username: "{{ dockerhub_username }}"
+    password: "{{ dockerhub_token }}"
 
 - name: Create and upload webserver image
   community.docker.docker_image:
@@ -38,9 +38,9 @@
       path: .
       rm: yes
       pull: no
-    repository: {{ repository_name | default('artempvl') }}
-    name: {{ webserver_image_name | default('webserver') }}
-    tag: {{ webserver_version | default('latest') }}
+    repository: "{{ repository_name | default('artempvl') }}"
+    name: "{{ webserver_image_name | default('webserver') }}"
+    tag: "{{ webserver_version | default('latest') }}"
     source: build
     push: yes
     state: present
