@@ -22,7 +22,7 @@
 
 - name: Find created war files
   ansible.builtin.find:
-   paths: "/source/target"
+   paths: "/source/target/"
    recurse: no
    patterns: "*.war"
   register: files_to_copy
