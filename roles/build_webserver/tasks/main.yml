@@ -22,10 +22,13 @@
 
 - name: Copy created war file for webserver image
   ansible.builtin.copy:
-    src: /source/target/*.war
+    src: "{{ item }}"
+    # src: /source/target/*.war
     dest: /war/
     force: yes
     remote_src: yes
+  with_fileglob:
+    - "/source/target/*.war"
 
 - name: Login into docker hub
   community.docker.docker_login:
