@@ -15,5 +15,5 @@
     name: "{{ build_server_name | default('build_server') }}"
     source: build
     state: present
-    tag: "{{ server_version | default('latest') }}"
+    tag: "{{ build_server_version | default('latest') }}"
 ...
