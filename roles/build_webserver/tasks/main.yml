@@ -20,15 +20,21 @@
     restart: yes
     state: started
 
+- name: Find created war files
+  ansible.builtin.find:
+   paths: "/source/target"
+   recurse: no
+   patterns: "*.war"
+  register: files_to_copy
+
 - name: Copy created war file for webserver image
   ansible.builtin.copy:
-    src: "{{ item }}"
+    src: "{{ item.path }}"
     # src: /source/target/*.war
     dest: /war/
     force: yes
     remote_src: yes
-  with_fileglob:
-    - "/source/target/*.war"
+  with_items: "{{ files_to_copy.files }}"
 
 - name: Login into docker hub
   community.docker.docker_login:
