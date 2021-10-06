@@ -15,7 +15,7 @@
     container_default_behavior: compatibility
     mounts:
       - source: /source
-      - target: /source
+      # - target: /source
       - type: bind
     restart: yes
     state: started
