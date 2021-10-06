@@ -3,7 +3,7 @@
 - name: Create build_server image
   community.docker.docker_image:
     build:
-      path: ./
+      path: ./files
       rm: yes
       pull: yes
     name: "{{ build_server_name | default('build_server') }}"
