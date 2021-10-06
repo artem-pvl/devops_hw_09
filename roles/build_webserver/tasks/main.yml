@@ -32,10 +32,16 @@
     username: "{{ dockerhub_username }}"
     password: "{{ dockerhub_token }}"
 
+- name: Copy Dockerfile file for webserver image
+  ansible.builtin.copy:
+    src: Dockerfile
+    dest: ~/
+    force: yes
+
 - name: Create and upload webserver image
   community.docker.docker_image:
     build:
-      path: ./files
+      path: ~/
       rm: yes
       pull: no
     repository: "{{ repository_name | default('artempvl') }}"
