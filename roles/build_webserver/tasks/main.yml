@@ -52,20 +52,20 @@
       path: ~/
       rm: yes
       pull: no
-    repository: "{{ dockerhub_username }}"
-    name: "{{ [dockerhub_username, webserver_image_name] | join('/') | default('artempvl/webserver') }}"
+    repository: "{{ [dockerhub_username, webserver_image_name] | join('/') | default('artempvl/webserver') }}"
+    name: "{{ webserver_image_name | default('webserver') }}"
     tag: "{{ webserver_version | default('latest') }}"
     source: build
-    # push: yes
+    push: yes
     state: present
 
-- name: Create and upload webserver image
-  community.docker.docker_image:
-    name: webserver
-    repository: artempvl/webserver:latest
-    tag: latest
-    source: local
-    push: yes
+# - name: Create and upload webserver image
+#   community.docker.docker_image:
+#     name: webserver
+#     repository: artempvl/webserver:latest
+#     tag: latest
+#     source: local
+#     push: yes
 
 - name: Clean up unnecessary files
   ansible.builtin.file: path={{item}} state=absent
