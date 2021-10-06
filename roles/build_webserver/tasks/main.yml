@@ -52,7 +52,7 @@
       path: ~/
       rm: yes
       pull: no
-    repository: "{{ repository_name | default('artempvl') }}"
+    repository: "{{ dockerhub_username }}"
     name: "{{ webserver_image_name | default('webserver') }}"
     tag: "{{ webserver_version | default('latest') }}"
     source: build
