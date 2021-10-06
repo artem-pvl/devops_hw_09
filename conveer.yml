@@ -1,0 +1,16 @@
+---
+- hosts: build, web
+  roles:
+    - common
+
+- hosts: build
+  roles:
+    - prepare_build_server
+    - role: build_webserver
+      vars:
+        dockerhub_username: 'artempvl'
+        dockerhub_token: 'cfb00c0f-3097-42d7-b18d-984f27200c5e'
+
+- hosts: web
+  roles:
+    - webserver
