@@ -61,12 +61,11 @@
 
 - name: Create and upload webserver image
   community.docker.docker_image:
-    repository: "{{ dockerhub_username }}"
-    name: "{{ [dockerhub_username, webserver_image_name] | join('/') | default('artempvl/webserver') }}"
-    tag: "{{ webserver_version | default('latest') }}"
+    name: webserver
+    repository: artempvl/webserver:latest
+    tag: latest
     source: local
     push: yes
-    state: present
 
 - name: Clean up unnecessary files
   ansible.builtin.file: path={{item}} state=absent
