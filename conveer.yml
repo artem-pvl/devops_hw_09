@@ -11,6 +11,7 @@
         source_repository_url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dockerhub_username: 'artempvl'
         dockerhub_token: 'cfb00c0f-3097-42d7-b18d-984f27200c5e'
+        webserver_image_name: 'webserver'
 
 - hosts: web
   roles:

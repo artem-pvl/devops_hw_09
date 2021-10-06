@@ -53,7 +53,7 @@
       rm: yes
       pull: no
     repository: "{{ dockerhub_username }}"
-    name: "{{ webserver_image_name | default('webserver') }}"
+    name: "{{ [dockerhub_username, webserver_image_name] | join('/') | default('artempvl/webserver') }}"
     tag: "{{ webserver_version | default('latest') }}"
     source: build
     push: yes
