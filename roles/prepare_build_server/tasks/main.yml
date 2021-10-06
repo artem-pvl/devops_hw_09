@@ -16,3 +16,4 @@
     source: build
     state: present
     tag: "{{ server_version | default('latest') }}"
+...
