@@ -14,9 +14,9 @@
     auto_remove: yes
     container_default_behavior: compatibility
     mounts:
-      target: /source
-      source: /source
-      type: bind
+      - source: /source
+        target: /source
+        type: bind
     restart: yes
     state: started
 
