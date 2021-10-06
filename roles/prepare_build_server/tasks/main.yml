@@ -10,7 +10,7 @@
   community.docker.docker_image:
     build:
       path: ~/
-      # rm: yes
+      rm: yes
       pull: yes
     name: "{{ build_server_name | default('build_server') }}"
     source: build
